@@ -32,6 +32,7 @@ nav .container {
   align-items: center;
   justify-content: space-between;
   padding: 0.75rem 1.5rem;
+  position: relative;
 }
 
 nav a {
@@ -40,12 +41,12 @@ nav a {
   font-weight: 600;
 }
 
-nav .nav-links {
+.nav-links {
   display: flex;
   gap: 1rem;
 }
 
-nav .nav-links a {
+.nav-links a {
   font-size: 0.875rem;
   font-weight: 400;
   position: relative;
@@ -67,6 +68,49 @@ nav .nav-links a {
   height: 2px;
   background: #4f46e5;
   border-radius: 1px;
+}
+
+/* Mobile Navigation */
+.mobile-menu-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: #1f2937;
+}
+
+.mobile-nav {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-top: none;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-nav a {
+  padding: 0.5rem 0;
+  font-size: 0.875rem;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.mobile-nav a:last-child {
+  border-bottom: none;
+}
+
+@media (max-width: 767px) {
+  .nav-links {
+    display: none;
+  }
+  .mobile-menu-btn {
+    display: block;
+  }
 }
 
 /* Sections */

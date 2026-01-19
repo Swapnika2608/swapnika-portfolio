@@ -31,9 +31,6 @@ const Hero = ({ name, title, summary, contact }) => (
             transition={{ delay: 0.35 }}
             className="mt-4 flex gap-3"
           >
-            <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
-              Bengaluru / Remote
-            </span>
           </motion.div>
 
           <div className="mt-8 flex gap-4">
@@ -269,16 +266,16 @@ const Contact = ({ contact }) => {
   );
 };
 
-// Top navigation with active section detection
+// Top navigation with mobile hamburger menu
 const Nav = ({ contact }) => {
   const [activeSection, setActiveSection] = React.useState('home');
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   React.useEffect(() => {
     const handleScroll = () => {
       const sections = ['home', 'projects', 'experience', 'certifications', 'skills', 'contact'];
       const scrollPosition = window.scrollY + 150;
       
-      // Check if we're at the bottom of the page (contact section)
       if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
         setActiveSection('contact');
         return;
@@ -298,7 +295,7 @@ const Nav = ({ contact }) => {
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Call once on mount
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -306,50 +303,40 @@ const Nav = ({ contact }) => {
     <nav>
       <div className="container">
         <a href="#home">Swapnika</a>
+        
+        {/* Mobile hamburger button */}
+        <button 
+          className="mobile-menu-btn"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+          </svg>
+        </button>
+
+        {/* Desktop navigation */}
         <div className="nav-links">
-          <a 
-            href={contact.resume} 
-            target="_blank"
-          >
-            Resume
-          </a>
-          <a 
-            href="https://github.com/Swapnika2608" 
-            target="_blank"
-          >
-            GitHub
-          </a>
-          <a 
-            href="#projects" 
-            className={activeSection === 'projects' ? 'nav-active' : ''}
-          >
-            Projects
-          </a>
-          <a 
-            href="#experience" 
-            className={activeSection === 'experience' ? 'nav-active' : ''}
-          >
-            Experience
-          </a>
-          <a 
-            href="#certifications" 
-            className={activeSection === 'certifications' ? 'nav-active' : ''}
-          >
-            Certificates
-          </a>
-          <a 
-            href="#skills" 
-            className={activeSection === 'skills' ? 'nav-active' : ''}
-          >
-            Skills
-          </a>
-          <a 
-            href="#contact" 
-            className={activeSection === 'contact' ? 'nav-active' : ''}
-          >
-            Contact
-          </a>
+          <a href={contact.resume} target="_blank">Resume</a>
+          <a href="https://github.com/Swapnika2608" target="_blank">GitHub</a>
+          <a href="#projects" className={activeSection === 'projects' ? 'nav-active' : ''}>Projects</a>
+          <a href="#experience" className={activeSection === 'experience' ? 'nav-active' : ''}>Experience</a>
+          <a href="#certifications" className={activeSection === 'certifications' ? 'nav-active' : ''}>Certificates</a>
+          <a href="#skills" className={activeSection === 'skills' ? 'nav-active' : ''}>Skills</a>
+          <a href="#contact" className={activeSection === 'contact' ? 'nav-active' : ''}>Contact</a>
         </div>
+
+        {/* Mobile navigation */}
+        {isMenuOpen && (
+          <div className="mobile-nav">
+            <a href={contact.resume} target="_blank" onClick={() => setIsMenuOpen(false)}>Resume</a>
+            <a href="https://github.com/Swapnika2608" target="_blank" onClick={() => setIsMenuOpen(false)}>GitHub</a>
+            <a href="#projects" className={activeSection === 'projects' ? 'nav-active' : ''} onClick={() => setIsMenuOpen(false)}>Projects</a>
+            <a href="#experience" className={activeSection === 'experience' ? 'nav-active' : ''} onClick={() => setIsMenuOpen(false)}>Experience</a>
+            <a href="#certifications" className={activeSection === 'certifications' ? 'nav-active' : ''} onClick={() => setIsMenuOpen(false)}>Certificates</a>
+            <a href="#skills" className={activeSection === 'skills' ? 'nav-active' : ''} onClick={() => setIsMenuOpen(false)}>Skills</a>
+            <a href="#contact" className={activeSection === 'contact' ? 'nav-active' : ''} onClick={() => setIsMenuOpen(false)}>Contact</a>
+          </div>
+        )}
       </div>
     </nav>
   );
