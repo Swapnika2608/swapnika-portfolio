@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-
+import profile from "./assets/profile.jpg";
 
 // Hero Banner
 const Hero = ({ name, title, summary, contact }) => (
@@ -31,6 +31,9 @@ const Hero = ({ name, title, summary, contact }) => (
             transition={{ delay: 0.35 }}
             className="mt-4 flex gap-3"
           >
+            <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
+              Bengaluru / Remote
+            </span>
           </motion.div>
 
           <div className="mt-8 flex gap-4">
@@ -75,7 +78,7 @@ const Hero = ({ name, title, summary, contact }) => (
           className="flex justify-center"
         >
           <img 
-            src="/src/assets/profile.jpg" 
+            src={profile} 
             alt="Veerlapati Swapnika"
             className="profile-image"
           />
