@@ -354,7 +354,7 @@ export default function Portfolio() {
       email: 'veerlapatiswapnika26@gmail.com',
       phone: '+91 6304898539',
       linkedin: 'https://www.linkedin.com/in/veerlapati-swapnika/',
-      resume: 'https://drive.google.com/uc?export=download&id=17QYvGuU6ZXjp5Cx0DK4mm_G6_zhpA4B6'
+      resume: 'https://drive.google.com/file/d/1CYpdcQo4-U1nCyezYri7hEMsYDWIZDiO/view?usp=drivesdk'
     },
     experience: [
       {
