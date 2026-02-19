@@ -22,7 +22,7 @@ const Hero = ({ name, title, summary, contact }) => (
             transition={{ delay: 0.25 }}
             className="mt-6 text-lg"
           >
-            SDE Intern @ Amazon | Full-Stack Developer | Serverless + MERN
+            SDE Intern @ Amazon | Full-Stack Developer | Serverless & AI-Driven Systems
           </motion.p>
 
           <motion.div
@@ -175,12 +175,17 @@ const ProjectCard = ({ p }) => (
     <h4>{p.title}</h4>
     <div className="text-gray-600 mt-1" style={{fontSize: '0.875rem'}}>{p.stack}</div>
     <p className="mt-4 text-gray-700">{p.desc}</p>
+    {p.keyFocus && (
+      <p className="mt-3 text-gray-600" style={{fontSize: '0.8rem', fontStyle: 'italic'}}>
+        <strong>Key Focus:</strong> {p.keyFocus}
+      </p>
+    )}
     <div className="mt-4 flex gap-4">
       {p.live && (
-        <a href={p.live} target='_blank' className="skill-tag">Live</a>
+        <a href={p.live} target='_blank' className="btn btn-primary" style={{fontSize: '0.875rem', padding: '0.5rem 1rem'}}>Live</a>
       )}
       {p.repo && (
-        <a href={p.repo} target='_blank' className="skill-tag">Repo</a>
+        <a href={p.repo} target='_blank' className="btn btn-secondary" style={{fontSize: '0.875rem', padding: '0.5rem 1rem'}}>Repo</a>
       )}
     </div>
   </motion.div>
@@ -232,7 +237,7 @@ const Contact = ({ contact }) => {
     <footer id="contact">
       <div className="container">
         <h3>Let's build something great together</h3>
-        <p className="mt-4 text-lg">Looking for SDE Intern / Full-time roles - let's connect.</p>
+        <p className="mt-4 text-lg">Looking for SDE Intern / Full-time roles - Let’s Build Scalable Systems.</p>
         
         <div className="mt-6 flex justify-center gap-6">
           <a href={`mailto:${contact.email}`} className="contact-icon" title="Email">
@@ -362,7 +367,7 @@ export default function Portfolio() {
         role: 'Software Development Engineer Intern',
         period: 'Jun 2025 - Aug 2025',
         location: 'Bangalore',
-        techStack: 'AWS Lambda • DynamoDB • CloudWatch • TypeScript • CloudFront • IAM • CodeCommit • CodeBuild • CodeDeploy • CodePipeline',
+        techStack: 'AWS Lambda • DynamoDB • CloudWatch • TypeScript • CI/CD (CodeCommit, CodeBuild, CodeDeploy)',
         points: [
           'Built a serverless xApp OTA Rollout Tracking System for real-time app version monitoring across Amazon ABI devices.',
           'Solved lack of visibility by enabling live rollout % tracking instead of manual partner reports.',
@@ -375,17 +380,19 @@ export default function Portfolio() {
     projects: [
       {
         title: 'Library Management System',
+        desc: 'Role-based library management platform supporting 1000+ records with 24 REST APIs, admin dashboard, and optimized loan workflows.',
         stack: 'MERN, TypeScript, Redux Toolkit',
-        desc: 'Full-featured library app with role-based auth, 24 REST APIs, admin dashboard, loan workflow and search filters.',
+        keyFocus: 'Role-Based Access Control | RESTful Design | Scalable CRUD Architecture',
         repo: 'https://github.com/Swapnika2608/Library-Management-System',
         live: 'https://library-management-system-azure-three.vercel.app/'
       },
       {
-        title: 'Wikipedia Search Application',
-        stack: 'HTML, CSS, JavaScript, Bootstrap, REST API',
-        desc: 'Custom search UI that fetches results from Wikipedia API and supports details view.',
-        repo: '#',
-        live: '#'
+        title: 'AI-Enhanced Secure File Sharing Platform',
+        desc: 'AI-powered secure file sharing platform with JWT authentication, encrypted storage, and ensemble anomaly detection for behavioral threat analysis. Designed 15+ REST APIs and 8+ relational tables.',
+        stack: 'Python, FastAPI, PostgreSQL, JWT, ML models',
+        keyFocus: 'Backend Security | Behavioral Anomaly Detection | Risk Scoring',
+        repo: 'https://github.com/Swapnika2608/AI-Enhanced-Secure-File-Sharing',
+        live: 'https://ai-enhanced-secure-file-sharing.onrender.com/'
       }
     ],
     certificates: [
@@ -407,20 +414,24 @@ export default function Portfolio() {
     ],
     skillGroups: [
       {
-        category: 'Backend / Programming Languages',
-        skills: ['Java', 'Python', 'JavaScript', 'TypeScript']
+        category: 'Programming Languages',
+        skills: ['Java', 'Python', 'C', 'JavaScript', 'TypeScript']
       },
       {
-        category: 'Frontend',
-        skills: ['ReactJS', 'HTML', 'CSS']
+        category: 'Databases',
+        skills: ['PostgreSQL', 'MongoDB', 'DynamoDB']
       },
       {
-        category: 'Database',
-        skills: ['MongoDB']
+        category: 'Frontend Development',
+        skills: ['HTML', 'CSS', 'ReactJS']
       },
       {
-        category: 'Tools',
-        skills: ['Git', 'Redux Toolkit', 'Power BI', 'Postman']
+        category: 'Backend Development',
+        skills: ['REST APIs', 'FastAPI']
+      },
+      {
+        category: 'Developer Tools & Platforms',
+        skills: ['Git', 'AWS (Lambda, DynamoDB, CloudWatch)']
       }
     ]
   };
